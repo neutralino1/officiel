@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Officiel</title>
+  <title>officiel</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div id="top-container">
+<div id="logo" class="dark-blue"><%= link_to "officiel", root_path %></div>
+<div id="white-container" class="box-shadow">
 <%= yield %>
-
+</div>
+</div>
 </body>
 </html>
