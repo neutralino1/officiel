@@ -41,7 +41,7 @@ div#logo a{
     color:#05224C;
 }
 
-input, textarea {
+.page-edit {
     border:0px;
 //    border:1px solid #d1d2d3;
     background-color:#f1f2f3;//#fff;
@@ -56,6 +56,8 @@ input#page_title {
 }
 
 .blue-button {
+    text-align:center;
+    width:100%;
     padding:5px;
     border-radius:4px;
     font-weight:bold;
@@ -63,6 +65,11 @@ input#page_title {
     background-image: -moz-linear-gradient(center top , #2A84CA, #0C66AC);
     background-repeat: repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.blue-button a{
+    text-decoration:none;
     color: rgba(255, 255, 255, 0.8);
 }
 
@@ -76,4 +83,7 @@ input#page_title {
 
 .box-shadow {
     box-shadow:0px 0px 3px #515253;
+}
+.fclear {
+    clear:both;
 }

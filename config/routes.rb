@@ -1,4 +1,9 @@
 Officiel::Application.routes.draw do
+  devise_for :users
+  devise_scope :user do
+    get "signup", :to => "devise/registrations#new"
+    get "login", :to => "devise/sessions#new"
+  end
   #get "home/index"
   root :to => "home#index"
   resources :pages
