@@ -1,9 +1,0 @@
-<div id="main-col">
-  <h1 class="text-shadow"><%= @user.full_name %></h1>
-</div>
-<div id="sidebar">
-<% if current_user.can_edit?(@user) %>
-<%= link_to content_tag(:div, 'Edit', :class=>"blue-button"), edit_user_path(@user) %>
-<% end %>
-</div>
-
