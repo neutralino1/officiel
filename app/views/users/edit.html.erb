@@ -1,0 +1,20 @@
+<%= form_for(@user) do |f| %>
+<div id="main-col">
+<%= f.text_field :first_name, :placeholder => 'First Name', :class =>
+'fat-input' %>
+<%= f.text_field :last_name, :placeholder => 'Last Name', :class =>
+'fat-input' %>
+<%= f.text_field :email, :class => 'reg-input', :disabled => true %>
+<%= f.text_field :position, :placeholder => 'Position', :class =>
+'reg-input' %>
+<%= f.text_field :skype, :placeholder => 'Skype username', :class =>
+'reg-input' %>
+<%= f.text_field :twitter, :placeholder => '@twitter_handle', :class =>
+'reg-input' %>
+<%= f.text_field :facebook, :placeholder => 'Facebook page', :class =>
+'reg-input' %>
+</div>
+<div id="sidebar">
+<%= f.submit 'Update', :class => 'btn blue-btn full-width' %>
+</div>
+<% end %>

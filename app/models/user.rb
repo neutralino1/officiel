@@ -4,6 +4,18 @@ class User < ActiveRecord::Base
   
   devise :omniauthable
 
+  def full_name
+    name = ''
+    name += first_name if first_name
+    name += ' ' unless name.empty?
+    name += last_name if last_name
+    name.empty? ? 'Unknown' : name
+  end
+
+  def can_edit?(user)
+    user == self
+  end
+
   def self.find_for_open_id(access_token, signed_in_resource=nil)
     data = access_token.info
     if user = User.where(:email => data["email"]).first
@@ -21,5 +33,5 @@ class User < ActiveRecord::Base
   #       :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :position, :skype, :twitter, :facebook
 end

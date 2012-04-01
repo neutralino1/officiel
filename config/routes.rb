@@ -2,11 +2,12 @@ Officiel::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do
     get "login", :to => "devise/sessions#new", :as => :new_user_session
-    get 'logout', :to => 'users/sessions#destroy', :as => :destroy_user_session
+    get 'logout', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
   #get "home/index"
   root :to => "home#index"
   resources :pages
+  resources :users
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
