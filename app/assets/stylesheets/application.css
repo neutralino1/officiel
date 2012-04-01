@@ -41,6 +41,16 @@ div#logo a{
     color:#05224C;
 }
 
+div#main-col {
+    float:left;
+    width:80%;
+}
+
+div#sidebar {
+    float:right;
+    width:20%;
+}
+
 .page-edit {
     border:0px;
 //    border:1px solid #d1d2d3;
@@ -55,22 +65,46 @@ input#page_title {
     margin-bottom:15px;
 }
 
+.fat-input {
+    font-size:38px;
+    font-weight:bold;
+    border:1px solid #f1f2f3;//1px solid #e8e9f1;
+    background-color:transparent;
+    width:100%;
+    margin:5px 0px;
+}
+
+.fat-input:focus {
+    border:1px solid #e8e9f1;
+}
+
 .blue-button {
     text-align:center;
-    width:100%;
     padding:5px;
+    font-size:40px;
     border-radius:4px;
     font-weight:bold;
     background-color: #2A84CA;
+    margin:5px 0px;
     background-image: -moz-linear-gradient(center top , #2A84CA, #0C66AC);
     background-repeat: repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: rgba(255, 255, 255, 0.8);
 }
 
+
 .blue-button a{
     text-decoration:none;
     color: rgba(255, 255, 255, 0.8);
+}
+
+.tiny {
+    font-size:12px;
+    font-weight:normal;
+}
+
+.full-width {
+    width:100%;
 }
 
 .dark-blue {

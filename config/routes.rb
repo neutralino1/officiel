@@ -1,8 +1,8 @@
 Officiel::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :user do
-    get "signup", :to => "devise/registrations#new"
-    get "login", :to => "devise/sessions#new"
+    get "login", :to => "devise/sessions#new", :as => :new_user_session
+    get 'logout', :to => 'users/sessions#destroy', :as => :destroy_user_session
   end
   #get "home/index"
   root :to => "home#index"

@@ -38,3 +38,4 @@ end
 gem 'execjs'
 gem 'therubyracer'
 gem 'devise'
+gem 'omniauth-openid'
