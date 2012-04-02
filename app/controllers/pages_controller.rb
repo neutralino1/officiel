@@ -1,13 +1,14 @@
 class PagesController < ApplicationController
   
-  before_filter :set_page, :only => [:show, :edit, :update]
+  before_filter :find_page_to_edit, :only => [:edit, :update, :destroy]
+  before_filter :find_page_to_view, :only => [:show]
   
   def new
     @page = Page.new
   end 
   
   def create
-    @page = Page.new(params[:page])
+    @page = Page.new(params[:page].merge(:owner => current_user))
     if @page.save
       redirect_to page_path(@page)
     else
@@ -29,11 +30,22 @@ class PagesController < ApplicationController
   
   def edit
   end
+
+  def destroy
+    @page.destroy
+    redirect_to root_path
+  end
   
   protected
-  
-  def set_page
-    @page = Page.find_by_id(params[:id])
+
+  def find_page_to_view
+    @page = Page.find(params[:id])
+    return render :status => :forbidden unless current_user.can_view?(@page)
+  end
+
+  def find_page_to_edit
+    @page = Page.find(params[:id])
+    return render :status => :forbidden unless current_user.can_edit?(@page)
   end
 end
   
