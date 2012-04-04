@@ -17,11 +17,11 @@ class User < ActiveRecord::Base
   end
 
   def can_view_page?(page)
-    page.owner == self
+    page.owner == self || page.editors.include?(self) || page.viewers.include?(self)
   end
 
   def can_edit_page?(page)
-    page.owner == self
+    page.owner == self || page.editors.include?(self)
   end
 
   def owns?(page)

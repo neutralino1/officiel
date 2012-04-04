@@ -8,6 +8,7 @@ Officiel::Application.routes.draw do
   root :to => "home#index"
   resources :pages
   resources :users
+  resources :permissions
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

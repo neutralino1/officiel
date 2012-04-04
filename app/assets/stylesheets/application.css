@@ -16,14 +16,11 @@ body{
 a {
     color:#111213;
     text-decoration:none;
+//    font-weight:bold;
 }
 
-div.permissions select{
-    width:100%;
-    background-color:transparent;
-    border:0px;
-    font-family:'Pontano Sans';
-    
+ul {
+    list-style:none;
 }
 
 div#top-container {
@@ -151,6 +148,44 @@ div.permissions {
     padding:5px;
 }
 
+div.permissions ul {
+    padding-left:5px;
+    margin:0px 0 10px 0;
+
+}
+
+li.subscription{
+    margin-bottom:2px;
+}
+
+div.permissions select{
+    width:100%;
+    background-color:transparent;
+    border:0px;
+    font-family:'Pontano Sans';  
+}
+
+div.permissions div {
+    font-weight:bold;
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+img.remove-sub {
+    float:right;
+    display:none;
+    margin-top:5px;
+}
+
+img.remove-sub:hover {
+    cursor:pointer;
+}
+
+li.subscription:hover img.remove-sub {
+    display: block;
+}
+
+
 div.meta-data {
     margin-bottom:10px;
     padding:5px;
@@ -176,6 +211,7 @@ div.meta-data {
 .box-shadow {
     box-shadow:0px 0px 3px #515253;
 }
+
 .fclear {
     clear:both;
 }

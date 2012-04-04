@@ -27,12 +27,13 @@ ActiveRecord::Schema.define(:version => 20120402204627) do
   create_table "permissions", :force => true do |t|
     t.integer  "user_id"
     t.integer  "page_id"
-    t.string   "type",       :default => "read", :null => false
+    t.string   "rights",     :default => "read", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "permissions", ["page_id"], :name => "index_permissions_on_page_id"
+  add_index "permissions", ["user_id", "page_id"], :name => "index_permissions_on_user_id_and_page_id", :unique => true
   add_index "permissions", ["user_id"], :name => "index_permissions_on_user_id"
 
   create_table "users", :force => true do |t|

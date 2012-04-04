@@ -6,7 +6,9 @@
     </div>
 </div>
 <div id="sidebar">
-  <%= render :partial => 'permissions' %>
+  <div id="page-info">
+    <%= render :partial => 'permissions' %>
+  </div>
   <%= link_to(content_tag(:div, 'Edit', :class=>'btn blue-btn'),
   edit_page_path(@page)) %>
   <%= link_to content_tag(:div, 'Delete', :class=>'btn red-btn'), @page,

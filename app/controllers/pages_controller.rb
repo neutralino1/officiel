@@ -27,10 +27,6 @@ class PagesController < ApplicationController
   
   def show
     @users = User.all
-    @editors = @page.editors
-    @non_editors = @users - @editors - [current_user]
-    @viewers = @page.viewers
-    @non_viewers = @users - @editors - @viewers - [current_user]
   end
   
   def edit
