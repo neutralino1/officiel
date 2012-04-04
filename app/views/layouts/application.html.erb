@@ -2,19 +2,20 @@
 <html>
   <head>
     <title>&#x266a; officiel</title>
+    <link href='http://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Krona+One' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <div id="top-container">
-      <div id="logo" class="dark-blue"><%= link_to "&#x266a; officiel".html_safe, root_path %></div>
-      <div id="white-container" class="box-shadow">
+      <div id="logo" class="dark-blue"><%= link_to "officiel".html_safe, root_path %></div>
 	<p class="notice"><%= notice %></p>
 	<p class="alert"><%= alert %></p>
 	<%= yield %>
-	<div class="fclear"></div>
-      </div>
     </div>
   </body>
 </html>

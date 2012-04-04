@@ -1,25 +1,12 @@
 <div id="main-col">
-  <h1 class="text-shadow"><%= @page.title %></h1>
-  <p><%= @page.content.html_safe %></p>
+  <div id="white-container" class="box-shadow">
+    <h1 class="text-shadow"><%= @page.title %></h1>
+    <p><%= @page.content.html_safe %></p>
+    <%= image_tag 'stamp.jpg', :class => 'stamp' %>
+    </div>
 </div>
 <div id="sidebar">
-  <div>
-  <% if current_user.owns?(@page) %>
-  You are
-  <% else %>
-  <%= @page.owner.first_name %> is
-  <% end %> the owner of this page.
-  </div>
-  <div>
-    <% if @page.editors.empty? %>
-    Nobody else can edit it.
-    <% end %>
-  </div>
-  <div>
-    <% if @page.editors.empty? %>
-    Nobody else can view it.
-    <% end %>
-  </div>
+  <%= render :partial => 'permissions' %>
   <%= link_to(content_tag(:div, 'Edit', :class=>'btn blue-btn'),
   edit_page_path(@page)) %>
   <%= link_to content_tag(:div, 'Delete', :class=>'btn red-btn'), @page,

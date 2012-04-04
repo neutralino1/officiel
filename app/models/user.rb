@@ -12,12 +12,24 @@ class User < ActiveRecord::Base
     name.empty? ? 'Unknown' : name
   end
 
-  def can_edit?(user)
-    user == self
+  def can_edit_user?(user)
+    root?
+  end
+
+  def can_view_page?(page)
+    page.owner == self
+  end
+
+  def can_edit_page?(page)
+    page.owner == self
   end
 
   def owns?(page)
     page.owner == self
+  end
+
+  def root?
+    status == 'root'
   end
 
   def self.find_for_open_id(access_token, signed_in_resource=nil)

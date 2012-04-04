@@ -8,14 +8,22 @@
 
 body{
     background-color:#E2E1DE;
-    font-family:Arial;
-    color:#111213;
-    font-size:14px;
+    font-family:'Pontano Sans';//'Dosis';//'Oxygen';
+    color:#292E30;//#111213;
+    font-size:18px;
 }
 
 a {
     color:#111213;
     text-decoration:none;
+}
+
+div.permissions select{
+    width:100%;
+    background-color:transparent;
+    border:0px;
+    font-family:'Pontano Sans';
+    
 }
 
 div#top-container {
@@ -24,17 +32,27 @@ div#top-container {
 }
 
 div#white-container {
-    width:100%;
-    background-color:#f1f2f3;
+//    width:100%;
+    background-color:#ffffff;
     padding:10px;
     border-radius:2px;
+    position:relative;
+}
+
+img.stamp {
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:100px;
+    opacity:0.1;
 }
 
 div#logo{
-    font-size:40px;
+    font-family:'Krona One';
+    font-size:50px;
     font-weight:bold;
     margin:20px 0;
-    text-shadow:0px 0px 3px #515253;
+//    text-shadow:0px 0px 3px #616263;
 }
 
 div#logo a{
@@ -44,20 +62,21 @@ div#logo a{
 
 div#main-col {
     float:left;
-    width:80%;
+    width:79%;
 }
 
 div#sidebar {
     float:right;
     width:20%;
+    padding-left:10px;
 }
 
 .page-edit {
     border:0px;
 //    border:1px solid #d1d2d3;
-    background-color:#f1f2f3;//#fff;
+//    background-color:#f1f2f3;//#fff;
     width:100%;
-    font-family:Arial;
+    font-family:'Pontano Sans';
 }
 
 input#page_title {
@@ -91,10 +110,12 @@ input#page_title {
 .btn {
     text-align:center;
     padding:5px;
-    font-size:40px;
+    font-size:38px;
+    font-family:'Arial';
+//  font-family:'Krona One';
     border-radius:4px;
     font-weight:bold;
-    margin:5px 0px;
+    margin:0px 0px 10px 0px;
     color: rgba(255, 255, 255, 0.8);
     border:1px solid black;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
@@ -121,6 +142,18 @@ input#page_title {
     background-repeat: repeat-x;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     color: rgba(255, 255, 255, 0.8);
+}
+
+div.permissions {
+    background-color:#FAF7EB;
+    border: 1px solid #F0E7C2;
+    margin-bottom:10px;
+    padding:5px;
+}
+
+div.meta-data {
+    margin-bottom:10px;
+    padding:5px;
 }
 
 .tiny {

@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def find_user_for_edit
     @user = User.find_by_id(params[:id])
-    return render :status => :forbidden unless current_user.can_edit?(@user)
+    return render :status => :forbidden unless current_user.can_edit_user?(@user)
   end
 end
   

@@ -1,10 +1,19 @@
 <%= form_for(@page) do |f| %>
-<%= f.text_field :title, :placeholder => 'Page title...', :class =>
-'page-edit' %>
-<%= f.text_area :content, :placeholder => 'Page content...', :class =>
-'page-edit' %>
-<% button_txt = @page.new_record? ? 'Create page' : 'Update page' %>
-<%= f.submit button_txt, :class => 'blue-button' %>
-<% end %>
+<div id="main-col">
+  <div id="white-container" class="box-shadow">
+    <%= f.text_field :title, :placeholder => 'Page title...', :class =>
+    'page-edit' %>
+    <%= f.text_area :content, :placeholder => 'Page content...', :class =>
+    'page-edit' %>    
+  </div>
+</div>
+<div id="sidebar">
+  <% button_txt = @page.new_record? ? 'Create page' : 'Update page' %>
+  <%= f.submit button_txt, :class => 'btn blue-btn' %>
+  <%= link_to content_tag(:div, 'Delete', :class=>'btn red-btn'), @page,
+               :confirm => 'Are you sure?',
+               :method => :delete %>
+</div>
+  <% end %>
 <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>

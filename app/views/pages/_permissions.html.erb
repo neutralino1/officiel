@@ -1,0 +1,23 @@
+<div class="meta-data">
+  <% if current_user.owns?(@page) %>
+  You are
+  <% else %>
+  <%= @page.owner.first_name %> is
+  <% end %> the owner of this page.
+</div>
+<div class="permissions box-shadow">
+  <% if @editors.empty? %>
+  Nobody else can edit it.
+  <% end %>
+  <% if current_user.can_edit_page?(@page) %>
+  <%= select_tag "editors", options_from_collection_for_select(@non_editors, 'id', 'full_name'), :prompt => 'Add an editor' %>
+  <% end %>
+</div>
+<div class="permissions box-shadow">
+  <% if @viewers.empty? %>
+  Nobody else can view it.
+  <% end %>
+  <% if current_user.can_edit_page?(@page) %>
+  <%= select_tag "viewers", options_from_collection_for_select(@non_viewers, 'id', 'full_name'), :prompt => 'Add a viewer' %>
+  <% end %>
+</div>

@@ -26,6 +26,11 @@ class PagesController < ApplicationController
   end
   
   def show
+    @users = User.all
+    @editors = @page.editors
+    @non_editors = @users - @editors - [current_user]
+    @viewers = @page.viewers
+    @non_viewers = @users - @editors - @viewers - [current_user]
   end
   
   def edit
@@ -40,12 +45,12 @@ class PagesController < ApplicationController
 
   def find_page_to_view
     @page = Page.find(params[:id])
-    return render :status => :forbidden unless current_user.can_view?(@page)
+    return render :status => :forbidden unless current_user.can_view_page?(@page)
   end
 
   def find_page_to_edit
     @page = Page.find(params[:id])
-    return render :status => :forbidden unless current_user.can_edit?(@page)
+    return render :status => :forbidden unless current_user.can_edit_page?(@page)
   end
 end
   

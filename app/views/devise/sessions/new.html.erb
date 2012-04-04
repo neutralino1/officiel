@@ -1,2 +1,2 @@
-<div class="blue-button"><%= link_to "Sign in with Google",
-    user_omniauth_authorize_path(:google) %></div>
+<%= link_to content_tag(:div, 'Sign in with Google', :class => 'btn blue-btn'),
+    user_omniauth_authorize_path(:google) %>
