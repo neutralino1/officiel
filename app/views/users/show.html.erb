@@ -1,8 +1,13 @@
 <div id="main-col">
-  <h1 class="text-shadow"><%= @user.full_name %></h1>
+<div id="white-container" class="box-shadow">
+  <h1 class="text-shadow user"><%= @user.full_name %></h1>
   <h2><%= @user.position? ? @user.position : 'Unknown position' %></h2>
 </div>
+</div>
 <div id="sidebar">
+<div id="user-teams" class="yellow-widget">
+  <%= render :partial => 'user_teams' %>
+</div>
 <% if current_user.can_edit_user?(@user) %>
 <%= link_to content_tag(:div, 'Edit', :class=>'btn blue-btn'), edit_user_path(@user) %>
 <% end %>

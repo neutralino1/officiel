@@ -1,0 +1,19 @@
+<% if @user.teams.empty? %>
+This user doesn't belong to any team.
+<% else %>
+<div><%= pluralize(@user.teams.length, 'team') %></div>
+<ul>
+  <% @user.teams.each do |t| %>
+  <li class="small-team-name deletable">
+    <%= t.name %>
+    <% if current_user.can_edit_user?(@user) %>
+    <%= image_tag('delete.png', :class => 'remove', :alt =>'Remove from team', 'data-team_id' => t.id, 'data-user_id' => @user.id) %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+<% end %>
+<% if current_user.can_edit_user?(@user) %>
+<%= select_tag 'team_id', options_from_collection_for_select(@user.other_teams, 'id', 'name'), :prompt => 'Add to a team', 'data-user_id' => @user.id %>
+<% end %>
+

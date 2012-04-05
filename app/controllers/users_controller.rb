@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_filter :find_user_for_edit, :only => [:edit, :update]
 
   def show
+    
   end
   
   def edit

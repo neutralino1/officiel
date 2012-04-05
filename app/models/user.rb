@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   
   devise :omniauthable
 
+  has_and_belongs_to_many :teams
+  has_many :permissions, :as => :entity
+
   def full_name
     name = ''
     name += first_name if first_name
@@ -12,7 +15,21 @@ class User < ActiveRecord::Base
     name.empty? ? 'Unknown' : name
   end
 
+  alias :name :full_name
+
+  def typed_id
+    'user_' + id.to_s
+  end
+
+  def other_teams
+    Team.all - teams
+  end
+
   def can_edit_user?(user)
+    root? || user == self
+  end
+
+  def can_edit_team?(team)
     root?
   end
 
@@ -21,7 +38,11 @@ class User < ActiveRecord::Base
   end
 
   def can_edit_page?(page)
-    page.owner == self || page.editors.include?(self)
+    page.owner == self || page.editors.include?(self) || ((teams & page.editor_teams).count > 0)
+  end
+
+  def can_create_team?
+    root?
   end
 
   def owns?(page)

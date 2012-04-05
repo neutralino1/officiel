@@ -141,47 +141,69 @@ input#page_title {
     color: rgba(255, 255, 255, 0.8);
 }
 
-div.permissions {
+div.yellow-widget {
     background-color:#FAF7EB;
     border: 1px solid #F0E7C2;
     margin-bottom:10px;
     padding:5px;
 }
 
-div.permissions ul {
+div.yellow-widget ul {
     padding-left:5px;
     margin:0px 0 10px 0;
 
 }
 
-li.subscription{
+div.yellow-widget ul li {
     margin-bottom:2px;
 }
 
-div.permissions select{
+div.yellow-widget select{
     width:100%;
     background-color:transparent;
     border:0px;
     font-family:'Pontano Sans';  
 }
 
-div.permissions div {
+div.yellow-widget div {
     font-weight:bold;
     font-size:20px;
     margin-bottom:10px;
 }
 
-img.remove-sub {
+img.remove {
     float:right;
     display:none;
     margin-top:5px;
 }
 
-img.remove-sub:hover {
+img.remove:hover {
     cursor:pointer;
 }
 
-li.subscription:hover img.remove-sub {
+h1.user {
+    background:url('user-32.png') no-repeat 0px 5px;
+    padding-left:40px;
+}
+
+.fat-team-name {
+    background:url('group-32.png') no-repeat 0px 5px;
+    padding-left:40px;
+    font-size:38px;
+    font-weight:bold;
+}
+
+.small-team-name {
+    background:url('group-16.png') no-repeat 0px 3px;
+    padding-left:25px;
+}
+
+.small-user-name {
+    background:url('user-16.png') no-repeat 0px 3px;
+    padding-left:25px;
+}
+
+li.deletable:hover img.remove {
     display: block;
 }
 

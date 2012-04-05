@@ -5,18 +5,21 @@
   <%= @page.owner.first_name %> is
   <% end %> the owner of this page.
 </div>
-<div class="permissions box-shadow">
+<div class="yellow-widget">
   <% if @page.writes.empty? %>
   Nobody else can edit it.
   <% else %>
-  <% n = @page.writes.length %>
-  <div><%= pluralize(n, 'editor') %></div>
+  <div>Editors</div>
   <ul>
     <% @page.writes.each do |w| %>
-    <li class="subscription">
+    <li class="deletable small-<%= w.user ? 'user' : 'team' %>-name">
+      <% if w.user %>
       <%= link_to w.user.full_name,user_path(w.user) %>
+      <% else %>
+      <%= link_to w.team.name,team_path(w.team) %>
+      <% end %>
       <% if current_user.can_edit_page?(@page) %>
-      <%= image_tag('delete.png', :class => 'remove-sub', :alt =>'Remove editor', 'data-id' => w.id) %>
+      <%= image_tag('delete.png', :class => 'remove', :alt =>'Remove editor', 'data-id' => w.id) %>
       <% end %>
     </li>
     <% end %>
@@ -24,11 +27,12 @@
   <% end %>
   <% if current_user.can_edit_page?(@page) %>
   <%= select_tag "editor_id",
-      options_from_collection_for_select(@page.non_editors, 'id', 'full_name'),
+      #option_groups_from_collection_for_select(@page.collection_for_editors_select, :collection, :name, :id,:name),
+      options_from_collection_for_select(@page.non_editors + @page.non_editor_teams, 'typed_id', 'name'),
       :prompt => 'Add an editor', 'data-page_id' => @page.id %>
   <% end %>
 </div>
-<div class="permissions box-shadow">
+<div class="yellow-widget">
   <% if @page.viewers.empty? %>
   Nobody else can view it.
   <% end %>

@@ -1,8 +1,9 @@
 class PermissionsController < ApplicationController
   def create
     @page = Page.find(params[:page_id])
-    user = User.find(params[:user_id])
-    @page.permissions.create({:user => user, :rights => params[:rights]})
+    klass, id = params[:entity_id].split('_')
+    entity = klass.capitalize.constantize.find(id)
+    @page.permissions.create({:entity => entity, :rights => params[:rights]})
     render :partial => 'pages/permissions'
   end
 

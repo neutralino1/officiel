@@ -1,26 +1,30 @@
 class Page < ActiveRecord::Base
 
-#  has_one(:owner, 
-#          :through => :permissions, 
-#          :source => :user, 
-#          :class_name => 'User', 
-#          :conditions => ['permissions.owner = ?', true])
-
   has_many(:viewers, 
            :through => :permissions, 
-           :source => :user,
+           :source => :entity,
+           :source_type => 'User',
            :class_name => 'User', 
            :conditions => ['permissions.rights = ?', 'read'])
 
   has_many(:editors, 
            :through => :permissions,
-           :source => :user,
+           :source => :entity,
+           :source_type => 'User',
            :class_name => 'User', 
+           :conditions => ['permissions.rights = ?', 'write'])
+
+  has_many(:editor_teams,
+           :through => :permissions,
+           :source => :entity,
+           :source_type => 'Team',
+           :class_name => 'Team',
            :conditions => ['permissions.rights = ?', 'write'])
 
   has_many(:subscribers, 
            :through => :permissions,
-           :source => :user,
+           :source => :entity,
+           :source_type => 'User',
            :class_name => 'User')
 
   has_many :permissions, :dependent => :destroy
@@ -30,8 +34,14 @@ class Page < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User', :foreign_key => :owner_id
 
+  #validates_format_of :name, :with => /\A\w{3,256}\z/
+
   def non_editors
     User.all - editors - [owner]
+  end
+
+  def non_editor_teams
+    Team.all - editor_teams
   end
 
   def non_subscribers
@@ -39,3 +49,4 @@ class Page < ActiveRecord::Base
   end
   
 end
+

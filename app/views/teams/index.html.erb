@@ -1,0 +1,19 @@
+<div id="main-col">
+  <div id="white-container" class="box-shadow">
+    <% if @teams.empty? %>
+    No teams.
+    <% else %>
+    <ul>
+      <% @teams.each do |t| %>
+      <li class="fat-team-name"><%= t.name %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+</div>
+<div id="sidebar">
+  <% if current_user.can_create_team? %>
+  <%= link_to(content_tag(:div, 'New team', :class=>'btn blue-btn'),
+  new_team_path) %>
+  <% end %>
+</div>

@@ -9,6 +9,10 @@ Officiel::Application.routes.draw do
   resources :pages
   resources :users
   resources :permissions
+  resources :teams
+  match "/teams/:id/add" => "teams#add", :via => :post
+  match "/teams/:id/remove" => "teams#remove", :via => :delete
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

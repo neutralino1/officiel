@@ -1,0 +1,10 @@
+<%= form_for(@team) do |f| %>
+<div id="main-col">
+  <div id="white-container" class="box-shadow">
+    <%= f.text_field :name, :placeholder => 'Team name...', :class => 'fat-input' %>
+  </div>
+</div>
+<div id="sidebar">
+  <%= f.submit 'Create team', :class => 'btn blue-btn' %>
+</div>
+<% end %>

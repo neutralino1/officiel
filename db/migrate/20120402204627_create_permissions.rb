@@ -10,7 +10,7 @@ class CreatePermissions < ActiveRecord::Migration
     add_index :permissions, :page_id
     add_index :permissions, [:user_id, :page_id], :unique => true
     
-    add_column :pages, :owner_id, :integer
-    add_index :pages, :owner_id
+#    add_column :pages, :owner_id, :integer
+#    add_index :pages, :owner_id
   end
 end
