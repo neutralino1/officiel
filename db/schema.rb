@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405124155) do
+ActiveRecord::Schema.define(:version => 20120405155612) do
 
   create_table "pages", :force => true do |t|
     t.string   "title"
@@ -78,5 +78,16 @@ ActiveRecord::Schema.define(:version => 20120405124155) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "versions", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "version"
+    t.integer  "page_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "versions", ["page_id"], :name => "index_versions_on_page_id"
 
 end

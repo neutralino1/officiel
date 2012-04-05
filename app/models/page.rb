@@ -34,6 +34,8 @@ class Page < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User', :foreign_key => :owner_id
 
+  has_many :versions
+
   #validates_format_of :name, :with => /\A\w{3,256}\z/
 
   def non_editors
