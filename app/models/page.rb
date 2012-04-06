@@ -34,9 +34,12 @@ class Page < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User', :foreign_key => :owner_id
 
-  has_many :versions
+  has_many :versions, :dependent => :destroy
+  accepts_nested_attributes_for :versions
 
-  #validates_format_of :name, :with => /\A\w{3,256}\z/
+  def latest_version
+    versions.find(:first, :order => 'created_at DESC')
+  end
 
   def non_editors
     User.all - editors - [owner]

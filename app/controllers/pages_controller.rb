@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   
   def new
     @page = Page.new
+    @version = @page.versions.build
   end 
   
   def create
@@ -26,7 +27,7 @@ class PagesController < ApplicationController
   end
   
   def show
-    @users = User.all
+    @version = @page.latest_version
   end
   
   def edit

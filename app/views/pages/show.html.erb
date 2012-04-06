@@ -1,16 +1,25 @@
 <div id="main-col">
   <div id="white-container" class="box-shadow">
-    <h1 class="text-shadow"><%= @page.title %></h1>
-    <p><%= @page.content.html_safe %></p>
+    <h1 class="text-shadow"><%= @version.title %></h1>
+    <div id="page-content"><%= @version.content.html_safe %></div>
     <%= image_tag 'stamp.jpg', :class => 'stamp' %>
     </div>
 </div>
 <div id="sidebar">
+  <%= link_to(content_tag(:div, 'Edit', :class=>'btn blue-btn'),
+  edit_page_path(@page)) %>
   <div id="page-info">
     <%= render :partial => 'permissions' %>
   </div>
-  <%= link_to(content_tag(:div, 'Edit', :class=>'btn blue-btn'),
-  edit_page_path(@page)) %>
+  <div id="version-widget" class="yellow-widget">
+    <div class="title">Versions</div>
+    <ul>
+    <% @page.versions.each do |v| %>
+    <li><%= v.version
+    %><div class="version-time"><%= time_ago_in_words(v.created_at) %></div></li>
+    <% end %>
+    </ul>
+  </div>
   <%= link_to content_tag(:div, 'Delete', :class=>'btn red-btn'), @page,
                :confirm => 'Are you sure?',
                :method => :delete %>

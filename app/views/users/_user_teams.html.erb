@@ -1,7 +1,7 @@
+<div class="title">Teams</div>
 <% if @user.teams.empty? %>
 This user doesn't belong to any team.
 <% else %>
-<div><%= pluralize(@user.teams.length, 'team') %></div>
 <ul>
   <% @user.teams.each do |t| %>
   <li class="small-team-name deletable">

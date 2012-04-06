@@ -1,10 +1,13 @@
 <%= form_for(@page) do |f| %>
 <div id="main-col">
   <div id="white-container" class="box-shadow">
-    <%= f.text_field :title, :placeholder => 'PageName', :class =>
+    <%= f.fields_for :versions do |v| %>
+    <%= v.text_field :title, :placeholder => 'PageName', :class =>
     'fat-input' %>
-    <%= f.text_area :content, :placeholder => 'Page content...', :class =>
-    'page-edit' %>    
+    <%= v.text_area :content, :placeholder => 'Page content...', :class =>
+    'page-edit' %>
+    <%= v.hidden_field :version, :value => 1 %>
+    <% end %>
   </div>
 </div>
 <div id="sidebar">
@@ -14,10 +17,10 @@
   <%= link_to content_tag(:div, 'Cancel', :class=>'btn red-btn'), root_path %>
   <% else %>
   <%= link_to content_tag(:div, 'Delete', :class=>'btn red-btn'), @page,
-               :confirm => 'Are you sure?',
-               :method => :delete %>
+  :confirm => 'Are you sure?',
+  :method => :delete %>
   <% end %>
 </div>
-  <% end %>
+<% end %>
 <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>

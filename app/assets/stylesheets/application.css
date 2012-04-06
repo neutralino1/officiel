@@ -36,6 +36,10 @@ div#white-container {
     position:relative;
 }
 
+div#page-content {
+    min-height:400px;
+}
+
 img.stamp {
     position:absolute;
     top:10px;
@@ -165,7 +169,7 @@ div.yellow-widget select{
     font-family:'Pontano Sans';  
 }
 
-div.yellow-widget div {
+div.yellow-widget div.title {
     font-weight:bold;
     font-size:20px;
     margin-bottom:10px;
@@ -211,6 +215,10 @@ li.deletable:hover img.remove {
 div.meta-data {
     margin-bottom:10px;
     padding:5px;
+}
+
+div#version-widget div.version-time {
+    float:right;
 }
 
 .tiny {

@@ -1,4 +1,4 @@
-<div class="meta-data">
+<div class="yellow-widget">
   <% if current_user.owns?(@page) %>
   You are
   <% else %>
@@ -6,10 +6,10 @@
   <% end %> the owner of this page.
 </div>
 <div class="yellow-widget">
+  <div class="title">Editors</div>
   <% if @page.writes.empty? %>
   Nobody else can edit it.
   <% else %>
-  <div>Editors</div>
   <ul>
     <% @page.writes.each do |w| %>
     <li class="deletable small-<%= w.user ? 'user' : 'team' %>-name">
@@ -33,6 +33,7 @@
   <% end %>
 </div>
 <div class="yellow-widget">
+  <div class="title">Viewers</div>
   <% if @page.viewers.empty? %>
   Nobody else can view it.
   <% end %>
