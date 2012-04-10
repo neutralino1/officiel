@@ -14,9 +14,9 @@
   <div id="version-widget" class="yellow-widget">
     <div class="title">Versions</div>
     <ul>
-    <% @page.versions.each do |v| %>
-    <li><%= v.version
-    %><div class="version-time"><%= time_ago_in_words(v.created_at) %></div></li>
+    <% @page.versions_grouped_by_version.each do |v, date| %>
+    <li>v<%= v
+    %><div class="version-time"><%= time_ago_in_words(date.first.created_at) %></div></li>
     <% end %>
     </ul>
   </div>

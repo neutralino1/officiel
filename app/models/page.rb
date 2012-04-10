@@ -41,6 +41,10 @@ class Page < ActiveRecord::Base
     versions.find(:first, :order => 'created_at DESC')
   end
 
+  def versions_grouped_by_version
+    versions.group_by(&:version)
+  end
+
   def non_editors
     User.all - editors - [owner]
   end

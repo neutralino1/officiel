@@ -5,11 +5,12 @@ class PagesController < ApplicationController
   
   def new
     @page = Page.new
-    @version = @page.versions.build
+    @version = @page.versions.build(:version => 1)
   end 
   
   def create
-    @page = Page.new(params[:page].merge(:owner => current_user))
+    @page = Page.new(:owner => current_user)
+    @page.versions.build(:title => params[:title], :content => params[:content], :version => params[:version])
     if @page.save
       redirect_to page_path(@page)
     else
@@ -18,7 +19,8 @@ class PagesController < ApplicationController
   end
   
   def update
-    @page.update_attributes(params[:page])
+    params[:version] = params[:version].to_i + (params[:new_version] ? 1 : 0)
+    @page.versions.build(:title => params[:title], :content => params[:content], :version => params[:version])
     if @page.save
       redirect_to page_path(@page)
     else
@@ -31,6 +33,7 @@ class PagesController < ApplicationController
   end
   
   def edit
+    @version = @page.latest_version
   end
 
   def destroy

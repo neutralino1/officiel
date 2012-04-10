@@ -1,18 +1,22 @@
-<%= form_for(@page) do |f| %>
+<% if @page.new_record? %>
+<%= form_tag(pages_path, :method => :post) %>
+<% else %>
+<%= form_tag(page_path(@page), :method => :put) %>
+<% end %>
 <div id="main-col">
   <div id="white-container" class="box-shadow">
-    <%= f.fields_for :versions do |v| %>
-    <%= v.text_field :title, :placeholder => 'PageName', :class =>
+    <%= text_field_tag 'title', @version.title, :placeholder => 'PageName', :class =>
     'fat-input' %>
-    <%= v.text_area :content, :placeholder => 'Page content...', :class =>
+      <%= text_area_tag 'content', @version.content, :placeholder => 'Page content...', :class =>
     'page-edit' %>
-    <%= v.hidden_field :version, :value => 1 %>
-    <% end %>
+      <%= check_box_tag 'new_version' %><%= label_tag 'new_version',
+    'new version' %>
+    <%= hidden_field_tag :version, @version.version %>
   </div>
 </div>
 <div id="sidebar">
   <% button_txt = @page.new_record? ? 'Create page' : 'Update page' %>
-  <%= f.submit button_txt, :class => 'btn blue-btn' %>
+  <%= submit_tag button_txt, :class => 'btn blue-btn' %>
   <% if @page.new_record? %>
   <%= link_to content_tag(:div, 'Cancel', :class=>'btn red-btn'), root_path %>
   <% else %>
@@ -21,6 +25,5 @@
   :method => :delete %>
   <% end %>
 </div>
-<% end %>
-<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<%= javascript_include_tag "nicEdit-latest" %>
 <script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
