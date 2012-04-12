@@ -11,6 +11,7 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(:owner => current_user)
     @page.versions.build(:title => params[:title], :content => params[:content], :version => params[:version])
+    @page.actions.build(:user => current_user, :action => 'create')
     if @page.save
       redirect_to page_path(@page)
     else
@@ -21,6 +22,7 @@ class PagesController < ApplicationController
   def update
     params[:version] = params[:version].to_i + (params[:new_version] ? 1 : 0)
     @page.versions.build(:title => params[:title], :content => params[:content], :version => params[:version])
+    Action.create_action(:action => 'update', :user => current_user, :page => @page)
     if @page.save
       redirect_to page_path(@page)
     else
@@ -29,7 +31,9 @@ class PagesController < ApplicationController
   end
   
   def show
+    Action.create_action(:action => 'view', :user => current_user, :page => @page)
     @version = @page.latest_version
+    @actions = @page.actions
   end
   
   def edit
@@ -37,6 +41,7 @@ class PagesController < ApplicationController
   end
 
   def destroy
+    Action.create_action(:action => 'destroy', :user => current_user, :page => @page)
     @page.destroy
     redirect_to root_path
   end

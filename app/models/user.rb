@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :teams
   has_many :permissions, :as => :entity
+  has_many :actions
 
   def full_name
     name = ''
@@ -16,6 +17,25 @@ class User < ActiveRecord::Base
   end
 
   alias :name :full_name
+
+  def short_name
+    name = ''
+    name += first_name if first_name
+    name += ' ' unless name.empty?
+    if last_name
+      if name.empty?
+        name += last_name
+      else
+        name += last_name[0].capitalize + "."
+      end
+    end
+    name.empty? ? 'Unknown' : name
+  end
+
+  def short_name_for(user)
+    return 'you' if user == self
+    short_name
+  end
 
   def typed_id
     'user_' + id.to_s

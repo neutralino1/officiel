@@ -225,7 +225,7 @@ div#version-widget div.version-time {
     float:right;
 }
 
-div#version-widget {
+div#version-widget, div#log-widget {
     font-size:14px;
 }
 

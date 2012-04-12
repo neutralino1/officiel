@@ -34,6 +34,8 @@ class Page < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User', :foreign_key => :owner_id
 
+  has_many :actions
+
   has_many :versions, :dependent => :destroy
   accepts_nested_attributes_for :versions
 
@@ -56,6 +58,10 @@ class Page < ActiveRecord::Base
   def non_subscribers
     User.all - subscribers - [owner]
   end
-  
+
+  def last_action
+    actions.find(:first, :order => 'created_at DESC')
+  end  
+
 end
 

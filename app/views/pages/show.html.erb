@@ -3,7 +3,7 @@
     <h1 class="text-shadow"><%= @version.title %></h1>
     <div id="page-content"><%= @version.content.html_safe %></div>
     <%= image_tag 'stamp.jpg', :class => 'stamp' %>
-    </div>
+  </div>
 </div>
 <div id="sidebar">
   <%= link_to(content_tag(:div, 'Edit', :class=>'btn blue-btn'),
@@ -14,13 +14,22 @@
   <div id="version-widget" class="yellow-widget">
     <div class="title">Versions</div>
     <ul>
-    <% @page.versions_grouped_by_version.each do |v, date| %>
-    <li>v<%= v
-    %><div class="version-time"><%= time_ago_in_words(date.first.created_at) %></div></li>
-    <% end %>
+      <% @page.versions_grouped_by_version.each do |v, date| %>
+      <li>v<%= v
+	       %><div class="version-time"><%= time_ago_in_words(date.first.created_at) %></div></li>
+      <% end %>
+    </ul>
+  </div>
+  <div id="log-widget" class="yellow-widget">
+    <div class="title">Log</div>
+    <ul>
+      <% @actions.each do |a| %>
+      <li><%= "#{a.action_past.capitalize} by #{a.user.short_name_for(current_user)}
+      #{time_ago_in_words(a.updated_at)} ago" %></li>
+      <% end %>
     </ul>
   </div>
   <%= link_to content_tag(:div, 'Delete', :class=>'btn red-btn'), @page,
-               :confirm => 'Are you sure?',
-               :method => :delete %>
+  :confirm => 'Are you sure?',
+  :method => :delete %>
 </div>
