@@ -6,7 +6,9 @@ Officiel::Application.routes.draw do
   end
   #get "home/index"
   root :to => "home#index"
-  resources :pages
+  resources :pages do
+    resources :comments
+  end
   resources :users
   resources :permissions
   resources :teams

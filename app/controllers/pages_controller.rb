@@ -34,6 +34,7 @@ class PagesController < ApplicationController
     Action.create_action(:action => 'view', :user => current_user, :page => @page)
     @version = @page.latest_version
     @actions = @page.actions
+    @comments = @page.comments
   end
   
   def edit

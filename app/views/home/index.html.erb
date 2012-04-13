@@ -1,11 +1,69 @@
 <div id="main-col">
-Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum
-
+  <div id="white-container" class="box-shadow">
+  Welcome back <%= link_to current_user.first_name,
+		   user_path(current_user) %>!
+    <div id="home-docs">
+      <h2>Documents</h2>
+      <div id="your-docs">
+        <h3>Yours</h3>
+        <% if @your_docs.empty? %>
+        <div class="text-center">Nothing here!</br><%= link_to 'Create a document', new_page_path %></div>
+        <% else %>
+        <ul>
+          <% @your_docs.each_with_index do |d, i| %>
+          <li class="<%= oddity(i)%>"><%= link_to d.title, page_path(d) %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+      <div id="others-docs">
+        <h3>Others</h3>
+        <% if @others_docs.empty? %>
+        <div class="text-center">Nothing here!</div>
+        <% else %>
+        <ul>
+          <% @others_docs.each_with_index do |d, i| %>
+          <li class="<%= oddity(i)%>"><%= link_to d.title, page_path(d) %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+      <div class="fclear"></div>
+    </div>
+    <div id="home-log">
+      <h2>Log</h2>
+      <div id="your-log">
+        <h3>You</h3>
+        <% if @your_actions.empty? %>
+        <div class="text-center">Nothing here!</br>Get some work done.</div>
+        <% else %>
+        <ul>
+          <% @your_actions.each_with_index do |a, i| %>
+          <li class="<%= a.action %> <%= oddity(i)%>"><%= a.action_past.capitalize %> <%= link_to a.page.title, page_path(a.page) %>.
+            <div class="text-right tiny"><%= time_ago_in_words(a.updated_at)%> ago</div></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+      <div id="others-log">
+        <h3>Others</h3>
+        <% if @others_actions.empty? %>
+        <div class="text-center">Nothing here!</br>Your colleagues are lazy.</div>
+        <% else %>
+        <ul>
+          <% @others_actions.each do |a| %>
+          <li><%= "#{a.short_name} #{a.action_past}"%> <%= link_to a.page.title, page_path(a.page) %> <%= time_ago_in_words(a.updated_at)%> ago.</li>
+          <% end %>
+          <ul>
+            <% end %>
+      </div>
+      <div class="fclear"></div>
+    </div>
+  </div>
 </div>
 <div id="sidebar">
-Welcome back <%= link_to current_user.first_name,
-		 user_path(current_user) %>!
-<%=link_to(content_tag(:div, 'Create page', :class =>'btn blue-btn'),
-		 new_page_path) %>
-<%=link_to(content_tag(:div, 'Log out', :class =>'btn red-btn'), destroy_user_session_path) %>
+  <%=link_to(content_tag(:div, 'Create page', :class =>'btn blue-btn'),
+  new_page_path) %>
+  <%=link_to(content_tag(:div, 'Log out', :class =>'btn red-btn'), destroy_user_session_path) %>
 </div>
+  

@@ -9,7 +9,7 @@
 body{
     background-color:#E2E1DE;
     font-family:'Pontano Sans';//'Dosis';//'Oxygen';
-    color:#292E30;//#111213;
+    color:rgba(0,0,0,.8);//#292E30;//#111213;
     font-size:18px;
 }
 
@@ -21,6 +21,7 @@ a {
 
 ul {
     list-style:none;
+    padding:0px;
 }
 
 div#top-container {
@@ -34,6 +35,10 @@ div#white-container {
     padding:10px;
     border-radius:2px;
     position:relative;
+}
+
+div#white-container a{
+    text-decoration:underline;
 }
 
 div#page-content {
@@ -68,6 +73,7 @@ div#logo a{
 div#main-col {
     float:left;
     width:79%;
+    padding-bottom:20px;
 }
 
 div#sidebar {
@@ -157,7 +163,7 @@ div.yellow-widget {
 }
 
 div.yellow-widget ul {
-    padding-left:5px;
+//    padding-left:5px;
     margin:0px 0 10px 0;
 
 }
@@ -194,12 +200,90 @@ h1.user {
     padding-left:40px;
 }
 
+div#your-log h3, div#your-docs h3 {
+    background:url('user-24.png') no-repeat 0px 0px;
+    padding-left:40px;
+}
+
+div#others-log h3, div#others-docs h3 {
+    background:url('group-24.png') no-repeat 0px 0px;
+    padding-left:40px;
+}
+
+div#home-docs h2 {
+    background:url('version-32.png') no-repeat 0px 0px;
+    padding-left:40px;
+}
+
+div#home-log h2 {
+    background:url('clock-32.png') no-repeat 0px 0px;
+    padding-left:40px;
+}
+
+div#home-docs li {
+    background-image:url('version-16.png');
+    background-repeat:no-repeat;
+    background-position:1px 4px;
+    padding-left:20px;
+}
+
+div#home-log li {
+    background-repeat:no-repeat;
+    background-position:3px 4px;
+    padding-left:25px;
+}
+
+div#log-widget li {
+    background-repeat:no-repeat;
+    background-position:1px 2px;
+    padding-left:20px;
+}
+
+div#version-widget li {
+    background-image:url('version-16.png');
+    background-repeat:no-repeat;
+    background-position:1px 2px;
+    padding-left:20px;
+}
+
+li.create {
+    background-image:url('create-16.png');
+}
+
+li.comment {
+    background-image:url('comments-16.png');
+}
+
+
+li.update {
+    background-image:url('edit-16.png');
+}
+
+.odd {
+    background-color:rgba(0,0,0,.05);
+}
+
+div#comments h2 {
+    background:url('comments-32.png') no-repeat 0px 1px;
+    padding-left:40px;
+}
+
+textarea#comment {
+    font-family:'Pontano Sans';
+    width:100%;
+    height:100px;
+    border:0px;
+    margin-bottom:10px;
+    background-color:rgba(0,0,0,.05);
+}
+
 .fat-team-name {
     background:url('group-32.png') no-repeat 0px 5px;
     padding-left:40px;
     font-size:38px;
     font-weight:bold;
 }
+
 
 .small-team-name {
     background:url('group-16.png') no-repeat 0px 3px;
@@ -229,9 +313,20 @@ div#version-widget, div#log-widget {
     font-size:14px;
 }
 
+div#your-log, div#your-docs {
+    float:left;
+    width:50%;
+}
+
+div#others-log, div#others-docs {
+    float:right;
+    width:50%;
+}
+
 .tiny {
     font-size:12px;
     font-weight:normal;
+    color:rgba(0,0,0,.5);
 }
 
 .full-width {
@@ -248,6 +343,14 @@ div#version-widget, div#log-widget {
 
 .box-shadow {
     box-shadow:0px 0px 3px #515253;
+}
+
+.text-center {
+    text-align:center;
+}
+
+.text-right {
+    text-align:right;
 }
 
 .fclear {

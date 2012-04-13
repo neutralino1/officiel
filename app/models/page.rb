@@ -36,6 +36,8 @@ class Page < ActiveRecord::Base
 
   has_many :actions
 
+  has_many :comments, :as => :commentable, :dependent => :destroy
+
   has_many :versions, :dependent => :destroy
   accepts_nested_attributes_for :versions
 
@@ -62,6 +64,10 @@ class Page < ActiveRecord::Base
   def last_action
     actions.find(:first, :order => 'created_at DESC')
   end  
+
+  def title
+    latest_version.title
+  end
 
 end
 

@@ -8,6 +8,7 @@ class Action < ActiveRecord::Base
     return 'viewed' if action == 'view'
     return 'updated' if action == 'update'
     return 'created' if action == 'create'
+    return 'commented on' if action == 'comment'
   end
 
   def self.create_action(p)#:page => page, :user => user, :action => action)

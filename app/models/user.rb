@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :teams
   has_many :permissions, :as => :entity
   has_many :actions
-
+  has_many :pages, :foreign_key => :owner_id
+  has_many :comments
   def full_name
     name = ''
     name += first_name if first_name
@@ -65,8 +66,9 @@ class User < ActiveRecord::Base
     root?
   end
 
-  def owns?(page)
-    page.owner == self
+  def owns?(item)
+    return item.owner == self if item.is_a?(Page)
+    return item.user == self if item.is_a?(Comment)
   end
 
   def root?
